@@ -26,3 +26,30 @@ function getHumanChoice() {
         return null;
     }
 }
+
+// Variables to track the scores of the user and that of the computer
+var humanScore = 0;
+var computerScore = 0;
+
+// Compares the human choice and that of the computer and returns the winner
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        return human;
+    } else if (humanChoice === computerChoice) {
+        console.log(`You both picked ${humanChoice}. It's a tie.`);
+        return tie;
+    } else {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+        return computer;
+    }
+}
+
+if (playRound() === human) {
+    return humanScore++;
+} else if (playRound() === computer) {
+    return computerScore++;
+} else {
+    return computerScore++;
+    return humanScore++;
+}

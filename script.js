@@ -33,23 +33,35 @@ var computerScore = 0;
 
 // Compares the human choice and that of the computer and returns the winner
 function playRound(humanChoice, computerChoice) {
+    
     if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Scissors" && computerChoice === "Paper" || humanChoice === "Paper" && computerChoice === "Rock") {
         console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-        return human;
+        return "human";
     } else if (humanChoice === computerChoice) {
         console.log(`You both picked ${humanChoice}. It's a tie.`);
-        return tie;
+        return "tie";
     } else {
         console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
-        return computer;
+        return "computer";
     }
 }
 
-if (playRound() === human) {
-    return humanScore++;
-} else if (playRound() === computer) {
-    return computerScore++;
-} else {
-    return computerScore++;
-    return humanScore++;
+var humanChoice = getHumanChoice();
+while (!humanChoice) {
+    alert("Invalid choice. Please choose between Rock, Paper, or Scissors.");
+    humanChoice = getHumanChoice();
 }
+
+var computerChoice = getComputerChoice();
+var result = playRound(humanChoice, computerChoice);
+
+if (result === "human") {
+    humanScore++;
+} else if (result === "computer") {
+    computerScore++;
+} else {
+    // No update as it's a tie
+}
+
+console.log(`Human Score: ${humanScore}`);
+console.log(`Computer Score: ${computerScore}`);
